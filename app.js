@@ -1,14 +1,15 @@
 const express = require("express");
 const app = express();
-const path = require("path");
-const adminRouter = require("./routes/admin.route");
-const userRouter = require("./routes/user.route");
-const port = process.env.PORT || 5555;
 const mongoose = require("mongoose");
 
 mongoose.connect(
   "mongodb+srv://root:root@cluster0.9ei6p.mongodb.net/BookMyMeal?retryWrites=true&w=majority"
 );
+const path = require("path");
+const adminRouter = require("./routes/admin.route");
+const userRouter = require("./routes/user.route");
+const port = process.env.PORT || 5555;
+
 
 
 
