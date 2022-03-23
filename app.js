@@ -5,10 +5,10 @@ const adminRouter = require("./routes/admin.route");
 const userRouter = require("./routes/user.route");
 const mongoose = require("mongoose");
 mongoose.connect(
-  "mongodb+srv://root:root@cluster0.8em2i.mongodb.net/BookMyMeal?retryWrites=true&w=majority"
+  "mongodb+srv://root:root@cluster0.9ei6p.mongodb.net/BookMyMeal?retryWrites=true&w=majority"
 );
 
-const port = process.env.PORT || 5555
+const port = process.env.PORT || 5555;
 
 const bodyParser = require("body-parser");
 app.use(express.static(path.join(__dirname, "public")));

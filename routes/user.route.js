@@ -20,7 +20,7 @@ router.post("/signup"
 
 router.post("/signin"
                 ,body("email","please enter valid email").isEmail()
-                ,body("password","password must be 5 letter long").isLength(5)
+                ,body("password","password must be 5 letter long").isLength(4)
                 ,userController.signin);
  
 
