@@ -22,7 +22,7 @@ exports.addCategory = (request, response, next) => {
       }
 
 exports.viewcategorylist = (request,response,next)=>{
-  Category.find({_id:request.params.id})
+  Category.find()
   .then(results=>{
     return response.status(200).json(results);
   })
