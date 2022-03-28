@@ -22,7 +22,7 @@ exports.signup=(request,response)=>{
         console.log(err);
     });
 }
-
+ 
 exports.signin=(request,response)=>{
     
     User.findOne({

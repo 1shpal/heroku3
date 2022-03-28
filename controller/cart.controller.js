@@ -1,6 +1,8 @@
 const Cart = require("../model/cart.model");
 const { validationResult } = require("express-validator");
 const { response } = require("express");
+var cors = require('cors');
+app.use(cors());
 
 exports.addToCart = async (request, response) => {
   const errors = validationResult(request);
