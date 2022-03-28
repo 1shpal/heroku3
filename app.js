@@ -1,5 +1,8 @@
 const express = require("express");
 const app = express();
+var cors = require('cors');
+app.use(cors());
+
 const mongoose = require("mongoose");
 
 mongoose.connect(
@@ -9,10 +12,6 @@ const path = require("path");
 const adminRouter = require("./routes/admin.route");
 const userRouter = require("./routes/user.route");
 const port = process.env.PORT || 5555;
-
-
-
-
 const bodyParser = require("body-parser");
 app.use(express.static(path.join(__dirname, "public")));
 app.use(bodyParser.urlencoded({ extended: true }));
