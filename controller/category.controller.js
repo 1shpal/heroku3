@@ -1,5 +1,5 @@
 const Category = require("../model/category.model");
-// const {validationResult} = require('express-validator');
+ const {validationResult} = require('express-validator');
 const { response } = require("express");
 
 exports.addCategory = (request, response, next) => {
