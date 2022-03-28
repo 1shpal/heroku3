@@ -28,6 +28,7 @@ router.post("/addcategory",
     body("categoryname"),
     categoryController.addCategory);
 // router.get("/viewcategory", control.viewcategory);
+router.get("/category",categoryController.viewcategorylist);
 router.delete("/deletecategory/:id", categoryController.deletecategory);
 router.post("/updatecategory", upload.single('categoryimage'),
     body('categoryname').not().isEmpty(),
