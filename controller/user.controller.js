@@ -2,6 +2,7 @@ const User=require('../model/user.model');
 // const {validationResult} = require('express-validator');
 const { response } = require('express');
 const { replaceOne } = require('../model/user.model');
+const jwt = require("jsonwebtoken");
 
 exports.signup=(request,response)=>{
     
@@ -30,8 +31,16 @@ exports.signin=(request,response)=>{
         password:request.body.password
     })
     .then(result=>{
-       if(result)
-        return response.status(200).json(result);
+       if(result){
+         let payload = {subject:result._id};
+         let token = jwt.sign(payload,"jkfhsdjfskfdsjfsddv");
+         return response.status(200).json({
+           CurrentUser:result,
+           token:token
+          });
+
+       }
+
        else
        return response.status(404).json({message:"Invalid user"});
     }).catch(err=>{
