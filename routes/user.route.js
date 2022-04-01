@@ -13,8 +13,6 @@ const router = express.Router();
 
 router.post("/signup"
                ,body("username","please enter valid username").isAlpha()
-               ,body("email","please enter valid email").isEmail()
-               ,body("password","password must be 5 letter long").isLength(5)
                ,body("mobile","please enter valid mobile number").isLength(10)
                ,userController.signup);
 
