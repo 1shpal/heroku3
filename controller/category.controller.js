@@ -49,7 +49,7 @@ exports.updatecategory=(request,response)=>{
       {
         $set:{
           categoryname:request.body.categoryname,
-          categoryimage:"http://localhost:3000/images/"+request.file.filename
+          categoryimage:"https://bookmymealfirst.herokuapp.com/images/"+request.file.filename
         }
       }
     )
