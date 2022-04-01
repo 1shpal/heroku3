@@ -9,7 +9,7 @@ const cors = require("cors");
 const path = require("path");
 const adminRouter = require("./routes/admin.route");
 const userRouter = require("./routes/user.route");
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 5555;
 const bodyParser = require("body-parser");
 app.use(cors());
 app.use(express.static(path.join(__dirname, "public")));

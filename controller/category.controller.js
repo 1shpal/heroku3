@@ -10,7 +10,7 @@ exports.addCategory = (request, response, next) => {
         Category
           .create({
             categoryname:request.body.categoryname,
-            categoryimage:"https://bookmymealfirst.herokuapp.com/images/"+request.file.filename
+            categoryimage:"http://localhost:3000/images/"+request.file.filename
           })
           .then((result) => {
             return response.status(201).json(result);
