@@ -22,5 +22,5 @@ app.use("/api/admin", adminRouter);
 app.use("/api/user", userRouter);
 
 app.listen(port, () => {
-  console.log("server Started");
+  console.log("server Started");  
 });

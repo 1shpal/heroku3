@@ -6,6 +6,7 @@ const userController=require('../controller/user.controller');
 const foodPackages = require("../controller/foodPackage.controller");
 const {body }= require('express-validator')
 const multer = require("multer");
+const tokenVarification = require('../midelware/tokenVarification');
 var Storage = multer.diskStorage({
     destination: "public/images",
     filename: function (req, file, cb) {
@@ -22,17 +23,16 @@ router.post("/signup"
 router.get("/login"
     , adminController.signin);
 
-
+    
 router.post("/addcategory",
-    upload.single("categoryimage"),
+tokenVarification.varifyToken,
     body("categoryname"),
     categoryController.addCategory);
 // router.get("/viewcategory", control.viewcategory);
-router.get("/category",categoryController.viewcategorylist);
-router.delete("/deletecategory/:id", categoryController.deletecategory);
-router.post("/updatecategory", upload.single('categoryimage'),
+router.get("/category",tokenVarification.varifyToken,categoryController.viewcategorylist);
+router.post("/deletecategory", tokenVarification.varifyToken,categoryController.deletecategory);
+router.post("/updatecategory",tokenVarification.varifyToken,
     body('categoryname').not().isEmpty(),
-    body("categoryId").not().isEmpty(),
     categoryController.updatecategory);
 
 router.post("/addfoodpackage", upload.single("foodimage"), foodPackages.addfoodpackage);

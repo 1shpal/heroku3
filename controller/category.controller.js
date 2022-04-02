@@ -1,6 +1,7 @@
 const Category = require("../model/category.model");
  const {validationResult} = require('express-validator');
 const { response } = require("express");
+const tokenVarification = require('../midelware/tokenVarification');
 
 exports.addCategory = (request, response, next) => {
        const errors = validationResult(request);
@@ -9,8 +10,7 @@ exports.addCategory = (request, response, next) => {
         }        
         Category
           .create({
-            categoryname:request.body.categoryname,
-            categoryimage:"https://bookmymealfirst.herokuapp.com/images/"+request.file.filename
+            categoryname:request.body.categoryname
           })
           .then((result) => {
             return response.status(201).json(result);
@@ -32,11 +32,12 @@ exports.viewcategorylist = (request,response,next)=>{
 }
 
 exports.deletecategory=(request,response,next)=>{
-  Category.deleteOne({_id:request.params.id})
+  Category.deleteOne({_id:request.body.id})
   .then(result=>{
-      if(result.deletedCount)
+      if(result.deletedCount){
+      console.log(result)
        return response.status(202).json({message:"delete success"});
-      else 
+  }else 
       return response.status(204).json({message:"not deleted"});
     })
   .catch(err=>{
@@ -48,8 +49,7 @@ exports.updatecategory=(request,response)=>{
    Category.updateOne({_id:request.body.categoryId},
       {
         $set:{
-          categoryname:request.body.categoryname,
-          categoryimage:"https://bookmymealfirst.herokuapp.com/images/"+request.file.filename
+          categoryname:request.body.categoryname
         }
       }
     )
