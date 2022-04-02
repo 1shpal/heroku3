@@ -5,8 +5,11 @@ exports.varifyToken = (request,response,next)=>{
       return response.status(401).send('authorization failed');
        if(request.headers.authorization===null)
        return response.status(401).send('authorization failed');
-      let token = request.headers.authorization.split(" ")[1];
-      let payload=jwt.verify(token,'jkfhsdjfskfdsjfsddv');
+     // let token = request.headers.authorization.split(" ")[1];
+           let token = request.headers.authorization;
+ 
+     let payload=jwt.verify(token,'jkfhsdjfskfdsjfsddv');
+
       console.log(payload);
       next();
   }
