@@ -10,7 +10,8 @@ exports.addCategory = (request, response, next) => {
         }        
         Category
           .create({
-            categoryname:request.body.categoryname
+            categoryname:request.body.categoryname,
+            
           })
           .then((result) => {
             return response.status(201).json(result);
